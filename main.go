@@ -25,7 +25,7 @@ func main() {
 	json.Unmarshal([]byte(filedata), &conf)
 
 	for _,i := range conf.Locations {
-		finalCommand := fmt.Sprintf("-t overlay overlay -o lowerdir=%s,workdir=%s/.local/%s-workdir,upper=%s/.local/%s-mutable %s", i.srcLocation,homedir,i.name,homedir,i.name, i.dstLocation)
+		finalCommand := fmt.Sprintf("-t overlay overlay -o lowerdir=%s,workdir=%s/.local/%s-workdir,upperdir=%s/.local/%s-mutable %s", i.srcLocation,homedir,i.name,homedir,i.name, i.dstLocation)
 		exet := exec.Command("mount", finalCommand)
 		exet.Wait()
 		output, err := exet.Output()
